@@ -1,10 +1,11 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Arka Das</title>
 <meta name="description" content="Economist · China General CoA-SS Intern (AGCD), WTO Geneva · Incoming PhD Scholar, IIM Ahmedabad.">
+<link rel="icon" type="image/png" href="image1.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -120,11 +121,12 @@
 
   /* ---- experience list ---- */
   .cv{list-style:none;margin:0;padding:0;max-width:var(--maxw);}
-  .cv li{display:grid;grid-template-columns:130px 1fr;gap:22px;padding:15px 0;border-top:1px solid var(--line);}
+  .cv li{display:grid;grid-template-columns:130px 1fr;gap:22px;padding:16px 0;border-top:1px solid var(--line);}
   .cv li:first-child{border-top:none;}
   .cv .when{color:var(--muted);font-size:.9rem;font-variant-numeric:tabular-nums;padding-top:2px;}
   .cv .what b{display:block;color:var(--ink);font-weight:600;}
-  .cv .what span{color:var(--ink-soft);font-size:.96rem;}
+  .cv .what > span{display:block;color:var(--ink-soft);font-size:.96rem;margin-top:1px;}
+  .cv .what .detail{margin:8px 0 0;color:var(--ink-soft);font-size:.9rem;line-height:1.55;}
 
   /* ---- contact ---- */
   .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 40px;max-width:var(--maxw);}
@@ -165,8 +167,8 @@
       <a href="#contact">Contact</a>
     </nav>
     <div class="tools">
-      <button class="iconbtn" id="themeBtn" aria-label="Toggle colour theme" title="Toggle theme">◐</button>
-      <button class="iconbtn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+      <button class="iconbtn" id="themeBtn" aria-label="Toggle colour theme" title="Toggle theme">&#9689;</button>
+      <button class="iconbtn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
     </div>
   </div>
 </header>
@@ -175,8 +177,11 @@
 
   <!-- INTRO -->
   <section id="intro" class="intro">
-    <!-- To use a real photo, replace this block with: <div class="portrait"><img src="assets/portrait.jpg" alt="Arka"></div> -->
-    <div class="portrait"><span class="monogram">A</span></div>
+    <!-- Main photo: image2.png. Monogram shows automatically if the file is missing. -->
+    <div class="portrait">
+      <img src="image2.png" alt="Arka Das" onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+      <span class="monogram" style="display:none;">A</span>
+    </div>
     <div>
       <h1>Arka</h1>
       <ul class="roles">
@@ -189,7 +194,6 @@
       <div class="actions">
         <!-- Replace # with a link to your CV PDF (e.g. a Dropbox or Drive share link) -->
         <a class="btn primary" href="#" target="_blank" rel="noopener">Curriculum Vitae</a>
-        <!-- Replace with your email -->
         <a class="btn ghost" href="mailto:walkingarbage1.0@gmail.com">Email</a>
       </div>
     </div>
@@ -232,23 +236,43 @@
     <ul class="cv">
       <li>
         <span class="when">2027 —</span>
-        <span class="what"><b>PhD Scholar, Economics</b><span>Indian Institute of Management Ahmedabad (incoming)</span></span>
+        <div class="what">
+          <b>PhD Scholar, Economics</b>
+          <span>Indian Institute of Management Ahmedabad</span>
+          <p class="detail">Admitted to the Doctoral Programme in Management (DPM), Economics area (incoming). IIMA: NIRF #1 Management, QS #21 Business &amp; Management Studies.</p>
+        </div>
       </li>
       <li>
-        <span class="when">May-December 2026</span>
-        <span class="what"><b>China General CoA-SS Intern, Agriculture &amp; Commodities Division</b><span>World Trade Organization, Geneva</span></span>
+        <span class="when">May–December 2026</span>
+        <div class="what">
+          <b>China General CoA-SS Intern, Agriculture &amp; Commodities Division</b>
+          <span>World Trade Organization, Geneva</span>
+          <p class="detail">Selected as one of five interns worldwide for an end-to-end sponsored placement. Researching public stockholding systems and sustainable agriculture policies across member countries.</p>
+        </div>
       </li>
       <li>
         <span class="when">Prior</span>
-        <span class="what"><b>Research Intern, Climate Change Finance Unit</b><span>Department of Economic Affairs, Ministry of Finance, India — sustainable agriculture finance</span></span>
+        <div class="what">
+          <b>Research Intern, Climate Change Finance Unit</b>
+          <span>Department of Economic Affairs, Ministry of Finance — Delhi, India</span>
+          <p class="detail">Prepared research inputs for India's country submission to the UNFCCC Standing Committee on Finance (SCF) on sustainable agriculture and resilience in food systems. Supported work toward developing the country's climate finance taxonomy.</p>
+        </div>
       </li>
       <li>
         <span class="when">Prior</span>
-        <span class="what"><b>Research Intern</b><span>Foundation for Democratic Reforms</span></span>
+        <div class="what">
+          <b>Research Intern</b>
+          <span>Foundation for Democratic Reforms — Hyderabad, India</span>
+          <p class="detail">Worked under Dr. Jayaprakash Narayan; researched primary-healthcare systems and voting mechanisms across countries, benchmarking best practices against India.</p>
+        </div>
       </li>
       <li>
         <span class="when">M.A.</span>
-        <span class="what"><b>M.A. Economics</b><span>Indian Institute of Technology Madras — Master's thesis supervised by Dr. Sabuj Kumar Mandal</span></span>
+        <div class="what">
+          <b>M.A. Economics</b>
+          <span>Indian Institute of Technology Madras</span>
+          <p class="detail">Master's thesis supervised by Dr. Sabuj Kumar Mandal. IIT Madras: NIRF #1 Overall, QS #170 WUR Overall. Preceded by a B.Sc. (Hons.) in Economics, University of Calcutta.</p>
+        </div>
       </li>
     </ul>
   </section>
