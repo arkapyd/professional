@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arka — Trade Economist</title>
+<meta name="description" content="Trade economist · China General Intern, Agriculture and Commodities Division, WTO Geneva · Incoming PhD Scholar, IIM Ahmedabad.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --paper:#F6F7F4;
+    --surface:#FFFFFF;
+    --ink:#17211D;
+    --ink-soft:#4A5750;
+    --muted:#727E77;
+    --line:#DBE0D8;
+    --accent:#1E6B54;
+    --accent-soft:#E7EFE9;
+    --maxw:70ch;
+    --serif:"Newsreader",Georgia,serif;
+    --sans:"Inter",system-ui,-apple-system,sans-serif;
+  }
+  html[data-theme="dark"]{
+    --paper:#121614;
+    --surface:#171C1A;
+    --ink:#E9EDE8;
+    --ink-soft:#AEB7B1;
+    --muted:#7E8983;
+    --line:#28312D;
+    --accent:#5FC0A0;
+    --accent-soft:#1B2621;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    transition:background .3s ease,color .3s ease;
+  }
+  a{color:var(--accent);text-decoration:none;}
+  a:hover{text-decoration:underline;text-underline-offset:3px;}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px;}
+
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px;}
+
+  /* ---- top bar ---- */
+  .topbar{
+    position:sticky;top:0;z-index:50;
+    background:color-mix(in srgb,var(--paper) 88%,transparent);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:62px;}
+  .wordmark{font-family:var(--serif);font-size:1.25rem;font-weight:600;letter-spacing:.01em;color:var(--ink);}
+  .wordmark:hover{text-decoration:none;}
+  nav.links{display:flex;gap:26px;align-items:center;}
+  nav.links a{color:var(--ink-soft);font-size:.94rem;font-weight:500;}
+  nav.links a:hover{color:var(--accent);text-decoration:none;}
+  nav.links a.active{color:var(--accent);}
+  .tools{display:flex;align-items:center;gap:8px;}
+  .iconbtn{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:38px;height:38px;border:1px solid var(--line);border-radius:8px;
+    background:var(--surface);color:var(--ink-soft);cursor:pointer;
+  }
+  .iconbtn:hover{color:var(--accent);border-color:var(--accent);}
+  #menuBtn{display:none;}
+
+  /* ---- intro ---- */
+  main{padding-top:20px;}
+  section{padding:44px 0;border-bottom:1px solid var(--line);}
+  section:last-of-type{border-bottom:none;}
+  .intro{display:grid;grid-template-columns:200px 1fr;gap:40px;align-items:start;border-bottom:none;padding-top:52px;}
+  .portrait{
+    width:200px;aspect-ratio:4/5;border-radius:10px;overflow:hidden;
+    border:1px solid var(--line);background:var(--accent-soft);
+    display:flex;align-items:center;justify-content:center;position:relative;
+  }
+  .portrait img{width:100%;height:100%;object-fit:cover;display:block;}
+  .portrait .monogram{font-family:var(--serif);font-size:5rem;color:var(--accent);font-weight:500;}
+  .portrait::after{content:"";position:absolute;inset:0;border-radius:10px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);}
+
+  h1{font-family:var(--serif);font-weight:600;font-size:2.7rem;line-height:1.08;margin:0 0 14px;letter-spacing:-.01em;}
+  .roles{list-style:none;margin:0 0 6px;padding:0;color:var(--ink-soft);font-size:1.02rem;line-height:1.5;}
+  .roles li{margin:2px 0;}
+  .roles b{color:var(--ink);font-weight:600;}
+  .tagline{color:var(--muted);font-size:1rem;margin:14px 0 22px;max-width:56ch;}
+  .actions{display:flex;flex-wrap:wrap;gap:12px;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:9px 18px;border-radius:9px;font-size:.94rem;font-weight:600;
+    border:1px solid var(--accent);
+  }
+  .btn.primary{background:var(--accent);color:#fff;}
+  .btn.primary:hover{filter:brightness(1.06);text-decoration:none;}
+  .btn.ghost{background:transparent;color:var(--accent);}
+  .btn.ghost:hover{background:var(--accent-soft);text-decoration:none;}
+
+  /* ---- headings & prose ---- */
+  h2{font-family:var(--serif);font-weight:600;font-size:1.5rem;margin:0 0 20px;display:flex;align-items:center;gap:12px;}
+  h2::before{content:"";width:22px;height:2px;background:var(--accent);border-radius:2px;}
+  .prose{max-width:var(--maxw);}
+  .prose p{margin:0 0 16px;}
+  .prose p:last-child{margin-bottom:0;}
+
+  /* ---- research tags ---- */
+  .tags{display:flex;flex-wrap:wrap;gap:10px;max-width:var(--maxw);}
+  .tag{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 15px;font-size:.9rem;color:var(--ink-soft);}
+
+  /* ---- experience list ---- */
+  .cv{list-style:none;margin:0;padding:0;max-width:var(--maxw);}
+  .cv li{display:grid;grid-template-columns:130px 1fr;gap:22px;padding:15px 0;border-top:1px solid var(--line);}
+  .cv li:first-child{border-top:none;}
+  .cv .when{color:var(--muted);font-size:.9rem;font-variant-numeric:tabular-nums;padding-top:2px;}
+  .cv .what b{display:block;color:var(--ink);font-weight:600;}
+  .cv .what span{color:var(--ink-soft);font-size:.96rem;}
+
+  /* ---- contact ---- */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 40px;max-width:var(--maxw);}
+  .contact-grid dt{color:var(--muted);font-size:.82rem;margin-bottom:2px;}
+  .contact-grid dd{margin:0 0 12px;color:var(--ink);}
+
+  footer{padding:30px 0 46px;color:var(--muted);font-size:.85rem;}
+
+  /* ---- responsive ---- */
+  @media (max-width:720px){
+    body{font-size:16px;}
+    nav.links{
+      display:none;position:absolute;top:62px;left:0;right:0;flex-direction:column;
+      gap:0;background:var(--surface);border-bottom:1px solid var(--line);padding:8px 24px 16px;
+    }
+    nav.links.open{display:flex;}
+    nav.links a{padding:11px 0;border-bottom:1px solid var(--line);}
+    nav.links a:last-child{border-bottom:none;}
+    #menuBtn{display:inline-flex;}
+    .intro{grid-template-columns:1fr;gap:26px;padding-top:38px;}
+    .portrait{width:150px;}
+    h1{font-size:2.2rem;}
+    .cv li{grid-template-columns:1fr;gap:4px;}
+    .cv .when{padding-top:0;}
+    .contact-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <a href="#intro" class="wordmark">Arka</a>
+    <nav class="links" id="nav">
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="tools">
+      <button class="iconbtn" id="themeBtn" aria-label="Toggle colour theme" title="Toggle theme">◐</button>
+      <button class="iconbtn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- INTRO -->
+  <section id="intro" class="intro">
+    <!-- To use a real photo, replace this block with: <div class="portrait"><img src="assets/portrait.jpg" alt="Arka"></div> -->
+    <div class="portrait"><span class="monogram">A</span></div>
+    <div>
+      <h1>Arka</h1>
+      <ul class="roles">
+        <li><b>Trade Economist</b></li>
+        <li>China General Intern · Agriculture &amp; Commodities Division</li>
+        <li>World Trade Organization, Geneva</li>
+        <li>Incoming PhD Scholar, Economics · IIM Ahmedabad (2027)</li>
+      </ul>
+      <p class="tagline">Working at the intersection of international trade and agricultural economics — protectionism, deglobalisation, and the policies that shape production and food systems.</p>
+      <div class="actions">
+        <!-- Replace # with a link to your CV PDF (e.g. a Dropbox or Drive share link) -->
+        <a class="btn primary" href="#" target="_blank" rel="noopener">Curriculum Vitae</a>
+        <!-- Replace with your email -->
+        <a class="btn ghost" href="mailto:you@example.com">Email</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <h2>About</h2>
+    <div class="prose">
+      <p><b>Arka</b> is a trade economist currently serving as one of five China General Interns in the Agriculture and Commodities Division of the World Trade Organization in Geneva. His work sits where international trade meets agricultural economics, with a particular interest in protectionism, deglobalisation, and how trade rules and subsidies shape production and food systems.</p>
+      <p>He recently completed his M.A. in Economics at the Indian Institute of Technology Madras, where his thesis — supervised by Dr. Sabuj Kumar Mandal — focused on international trade and agriculture. Before Geneva, he contributed to policy research at the Climate Change Finance Unit of the Department of Economic Affairs (Ministry of Finance, India), working on sustainable agriculture finance, and earlier at the Foundation for Democratic Reforms.</p>
+      <p>He will begin his doctoral studies in Economics at the Indian Institute of Management Ahmedabad in 2027. Outside research, he builds small web projects, hosted at <a href="https://arkapyd.github.io" target="_blank" rel="noopener">arkapyd.github.io</a>.</p>
+    </div>
+  </section>
+
+  <!-- RESEARCH -->
+  <section id="research">
+    <h2>Research interests</h2>
+    <div class="tags">
+      <span class="tag">International trade &amp; trade policy</span>
+      <span class="tag">Protectionism &amp; deglobalisation</span>
+      <span class="tag">Agricultural &amp; production economics</span>
+      <span class="tag">Agricultural subsidies &amp; productivity</span>
+      <span class="tag">Green total factor productivity</span>
+      <span class="tag">Food systems &amp; trade</span>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <h2>Positions &amp; education</h2>
+    <ul class="cv">
+      <li>
+        <span class="when">2027 —</span>
+        <span class="what"><b>PhD Scholar, Economics</b><span>Indian Institute of Management Ahmedabad (incoming)</span></span>
+      </li>
+      <li>
+        <span class="when">2025 — 2026</span>
+        <span class="what"><b>China General Intern, Agriculture &amp; Commodities Division</b><span>World Trade Organization, Geneva</span></span>
+      </li>
+      <li>
+        <span class="when">Prior</span>
+        <span class="what"><b>Researcher, Climate Change Finance Unit</b><span>Department of Economic Affairs, Ministry of Finance, India — sustainable agriculture finance</span></span>
+      </li>
+      <li>
+        <span class="when">Prior</span>
+        <span class="what"><b>Researcher</b><span>Foundation for Democratic Reforms</span></span>
+      </li>
+      <li>
+        <span class="when">M.A.</span>
+        <span class="what"><b>M.A. Economics</b><span>Indian Institute of Technology Madras — thesis supervised by Dr. Sabuj Kumar Mandal</span></span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <dl class="contact-grid">
+      <div><dt>Email</dt><dd><a href="mailto:you@example.com">you@example.com</a></dd></div>
+      <div><dt>Based in</dt><dd>Geneva, Switzerland · Kolkata, India</dd></div>
+      <div><dt>Web</dt><dd><a href="https://arkapyd.github.io" target="_blank" rel="noopener">arkapyd.github.io</a></dd></div>
+      <div><dt>Elsewhere</dt><dd><a href="#" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/arkapyd" target="_blank" rel="noopener">GitHub</a></dd></div>
+    </dl>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  © <span id="year"></span> Arka · Built with HTML, CSS &amp; JavaScript.
+</footer>
+
+<script>
+  // year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // mobile menu
+  const menuBtn = document.getElementById('menuBtn');
+  const nav = document.getElementById('nav');
+  menuBtn.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open);
+  });
+  nav.querySelectorAll('a').forEach(a =>
+    a.addEventListener('click', () => {
+      nav.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', false);
+    })
+  );
+
+  // theme toggle (session only — respects system preference on load)
+  const root = document.documentElement;
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    root.setAttribute('data-theme', 'dark');
+  }
+  document.getElementById('themeBtn').addEventListener('click', () => {
+    root.setAttribute('data-theme',
+      root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  });
+
+  // highlight nav link for the section in view
+  const linkFor = {};
+  nav.querySelectorAll('a').forEach(a => linkFor[a.getAttribute('href').slice(1)] = a);
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        Object.values(linkFor).forEach(l => l.classList.remove('active'));
+        if (linkFor[e.target.id]) linkFor[e.target.id].classList.add('active');
+      }
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  document.querySelectorAll('section[id]').forEach(s => obs.observe(s));
+</script>
+
+</body>
+</html>
